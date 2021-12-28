@@ -2,18 +2,20 @@ service:
   name: nest-serverless-lambda-demo
 
 plugins:
-  - serverless-plugin-typescript
+  - serverless-plugin-typescript'
   - serverless-plugin-optimize
   - serverless-offline
 
 provider:
   name: aws
-  runtime: nodejs12.x
+  runtime: nodejs14.x
+  region: ap-southeast-1
+  lambdaHashingVersion: 20201221
 
 functions:
   main: # The name of the lambda function
-    handler: src/lambda.handler
+    handler: src/lambda.handler # The module 'handler' is exported in the file 'src/lambda'
     events:
       - http:
-        method: any
-        path: /{any+}
+          method: any
+          path: /{any+}
